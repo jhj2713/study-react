@@ -4,6 +4,7 @@
 
 - axios
 - immer
+- quill
 - react-redux
 - react-router-dom
 - redux
