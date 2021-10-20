@@ -35,7 +35,7 @@ const ButtonStyle = css`
       }
     `}
 `;
-const StyledButton = styled.div`
+const StyledButton = styled.button`
   ${ButtonStyle}
 `;
 const StyledButtonLink = styled(Link)`
