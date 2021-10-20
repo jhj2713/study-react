@@ -40,13 +40,19 @@ const Fotter = styled.div`
 const StyledButtonWithMarginTop = styled(Button)`
   margin-top: 1rem;
 `;
+const ErrorMessage = styled.div`
+  color: red;
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+`;
 
 const textMap = {
   login: '로그인',
   register: '회원가입',
 };
 
-function AuthForm({ type, form, onChange, onSubmit }) {
+function AuthForm({ type, form, onChange, onSubmit, error }) {
   const text = textMap[type];
   return (
     <StyledAuthForm>
@@ -77,6 +83,7 @@ function AuthForm({ type, form, onChange, onSubmit }) {
             valye={form.passwordConfirm}
           />
         )}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <StyledButtonWithMarginTop cyan fullWidth>
           {text}
         </StyledButtonWithMarginTop>
