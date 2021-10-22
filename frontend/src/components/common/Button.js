@@ -16,6 +16,11 @@ const ButtonStyle = css`
     background: ${palette.gray[6]};
     transition: background 0.2s;
   }
+  &:disabled {
+    background: ${palette.gray[3]};
+    color: ${palette.gray[5]};
+    cursor: not-allowed;
+  }
 
   ${(props) =>
     props.fullWidth &&
