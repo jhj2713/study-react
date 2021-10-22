@@ -5,6 +5,7 @@ import { readPost, unloadPost } from '../../modules/post';
 import PostViewer from '../../components/post/PostViewer';
 import PostActionButtons from '../../components/post/PostActionButtons';
 import { setOriginalPost } from '../../modules/write';
+import { removePost } from '../../lib/api/posts';
 
 const PostViewerContainer = ({ match, history }) => {
   const { postId } = match.params;
@@ -29,6 +30,14 @@ const PostViewerContainer = ({ match, history }) => {
     dispatch(setOriginalPost(post));
     history.push('/write');
   };
+  const onRemove = async () => {
+    try {
+      await removePost(postId);
+      history.push('/');
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const ownPost = (user && user._id) === (post && post.user._id);
 
@@ -37,7 +46,9 @@ const PostViewerContainer = ({ match, history }) => {
       post={{ title: '제목', body: '내용', tags: ['태그1', '태그2'] }}
       loading={false}
       error={null}
-      actionButtons={ownPost && <PostActionButtons onEdit={onEdit} />}
+      actionButtons={
+        ownPost && <PostActionButtons onEdit={onEdit} onRemove={onRemove} />
+      }
     />
   );
 };
