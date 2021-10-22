@@ -6,6 +6,7 @@
 - immer
 - qs
 - quill
+- react-helmet-async
 - react-redux
 - react-router-dom
 - redux
